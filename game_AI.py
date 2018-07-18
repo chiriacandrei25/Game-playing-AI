@@ -1,18 +1,22 @@
 import gym
 import random
 import numpy as np
-import  tflearn
+import tflearn
 from tflearn.layers.core import input_data, dropout, fully_connected
 from tflearn.layers.estimator import regression
 from statistics import mean, median
 from collections import Counter
 
-learning_rate = 0.001
+l_rate = 0.001
 environment = gym.make("CartPole-v1")
 environment.reset()
 steps_target = 500
 score_requirement = 50
 initial_games = 1000
+LAYERSIZE = 128
+pkeep = 0.8
+OUTPUTSIZE = 2
+NREPOCHS = 5
 
 def some_random_games_first():
     for episode in range(5):
@@ -61,5 +65,41 @@ def initial_population():
 
     return training_data
 
-initial_population()
+def neural_network_model(input_size):
+    network = input_data(shape=[None, input_size, 1], name="input")
 
+    #Hardcoding all the 5 layers
+    network = fully_connected(network, LAYERSIZE, activation='relu')
+    network = dropout(network, pkeep)
+
+    network = fully_connected(network, LAYERSIZE, activation='relu')
+    network = dropout(network, pkeep)
+
+    network = fully_connected(network, LAYERSIZE, activation='relu')
+    network = dropout(network, pkeep)
+
+    network = fully_connected(network, LAYERSIZE, activation='relu')
+    network = dropout(network, pkeep)
+
+    network = fully_connected(network, LAYERSIZE, activation='relu')
+    network = dropout(network, pkeep)
+
+    #Output layer
+    network = fully_connected(network, OUTPUTSIZE, activation='softmax')
+
+    #Optimizer
+    network = regression(network, optimizer='adam', learning_rate=l_rate, loss="categorical_crossentropy")
+
+    model = tflearn.models.DNN(network, tensorboard_dir="log")
+    return model
+
+def train_model(training_data, model=False):
+    X = np.array([i[0] for i in training_data]).reshape(-1, len(training_data[0][0]), 1)
+    Y = [i[1] for i in training_data]
+    if model == False:
+        model = neural_network_model(len(X[0]))
+    model.fit(X_inputs=X, Y_targets=Y, n_epoch=NREPOCHS, snapshot_step=500, show_metric=True, run_id='OpenAI')
+    return model
+
+training_data = initial_population()
+model = train_model(training_data)

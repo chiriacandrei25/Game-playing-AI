@@ -12,11 +12,11 @@ environment = gym.make("CartPole-v1")
 environment.reset()
 steps_target = 500
 score_requirement = 50
-initial_games = 1000
+initial_games = 4000
 LAYERSIZE = 128
 pkeep = 0.8
 OUTPUTSIZE = 2
-NREPOCHS = 5
+NREPOCHS = 3
 
 def some_random_games_first():
     for episode in range(5):
@@ -103,3 +103,25 @@ def train_model(training_data, model=False):
 
 training_data = initial_population()
 model = train_model(training_data)
+
+scores = []
+choices = []
+for each_game in range(100):
+    score = 0
+    game_memory = []
+    prev_obs = []
+    environment.reset()
+    for _ in range(steps_target):
+        if len(prev_obs) == 0:
+            action = random.randrange(0, 2)
+        else:
+            action = np.argmax(model.predict(prev_obs.reshape(-1, len(prev_obs), 1))[0])
+        choices.append(action)
+        new_observation, reward, done, info = environment.step(action)
+        prev_obs = new_observation
+        score += reward
+        if done:
+            break
+    scores.append(score)
+
+print("Average score:", sum(scores)/len(scores))

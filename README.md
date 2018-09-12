@@ -16,7 +16,7 @@ The program depends on the following libraries:
 
 - TfLearn
 
-For detailed steps to install Tensorflow, follow the Tensorflow installation instructions. A typical user can install Tensorflow using one of the following commands:
+For detailed steps to install Tensorflow, follow the [TensorFlow Installation Instructions](https://www.tensorflow.org/install/). A typical user can install Tensorflow using one of the following commands:
 
 ```
 # For CPU

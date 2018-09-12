@@ -41,7 +41,7 @@ You can test that you have correctly installed the dependencies by running the f
 python game_AI.py
 ```
 
-If everything is correctly configured, the program shuld start and you should see how it's strategy it imporves in time, form epoch to epcoh, by checking the loss and the average score.
+If everything is correctly configured, the program should start and you should see how it's strategy it imporves in time, form epoch to epcoh, by checking the loss and the average score.
 
 ## Playing Improvement
 

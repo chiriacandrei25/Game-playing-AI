@@ -1,4 +1,4 @@
-# Game-playing-AI
+# Description
 ### Neural Network that learns to play CartPole-v1 from OpenAI gym
 
 CartPole-v1 is a game where there is a pole attached by an un-actuated joint to a cart,
@@ -6,8 +6,8 @@ which moves along a frictionless track. The pendulum starts upright, and the goa
 moving it only left and right.
 https://gym.openai.com/envs/CartPole-v1/
 
-## Installation
-# Dependencies
+# Installation
+## Dependencies
 The program depends on the following libraries:
 
 - OpenAI Gym
@@ -22,7 +22,7 @@ pip install tensorflow-gpu
 pip install gym
 pip install tflearn
 ```
-# Testing the Installation
+## Testing the Installation
 
 You can test that you have correctly installed the dependencies by running the following command:
 
@@ -30,7 +30,7 @@ You can test that you have correctly installed the dependencies by running the f
 python game_AI.py
 ```
 
-## Playing Improvement
+# Playing Improvement
 
 
 Initalized the Neural Network using a set of completely random moves, which acted really poor, the average score on 4000 games being only 60.

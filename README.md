@@ -6,8 +6,8 @@ which moves along a frictionless track. The pendulum starts upright, and the goa
 moving it only left and right.
 https://gym.openai.com/envs/CartPole-v1/
 
-# Installation
-## Dependencies
+## Installation
+### Dependencies
 The program depends on the following libraries:
 
 - OpenAI Gym
@@ -33,7 +33,7 @@ pip install --user gym
 pip install --user tflearn
 ```
 
-## Testing the installation and running the program
+### Testing the installation and running the program
 
 You can test that you have correctly installed the dependencies by running the following command:
 
@@ -43,7 +43,7 @@ python game_AI.py
 
 If everything is correctly configured, the program shuld start and you should see how it's strategy it imporves in time, form epoch to epcoh, by checking the loss and the average score.
 
-# Playing Improvement
+## Playing Improvement
 
 
 Initalized the Neural Network using a set of completely random moves, which acted really poor, the average score on 4000 games being only 60.

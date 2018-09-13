@@ -41,12 +41,12 @@ You can test that you have correctly installed the dependencies by running the f
 python game_AI.py
 ```
 
-If everything is correctly configured, the program should start and you should see how it's strategy it imporves in time, form epoch to epcoh, by checking the loss and the average score.
+If everything is correctly configured, the program should start and you should see how it's strategy imporves in time, form epoch to epoch, by checking the loss and the average score.
 
 ## Playing Improvement
 
 
-Initalized the Neural Network using a set of completely random moves, which acted really poor, the average score on 4000 games being only 60.
+I used a set of random generated ``left`` and ``right`` moves to initialize the weights and biases of the network. It acted quite poorly, it's accuracy being only 10% and the average score on 4000 games being 60.
 
 During 3 epochs of training and 415 training steps, it's accuracy slowly increased, reaching a high of 61% and an average score of 212.78:
 
